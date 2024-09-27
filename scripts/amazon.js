@@ -1,5 +1,5 @@
 //const cart = [];  as we have already used cart[] in the cart.js file
-import { cart } from "../data/cart.js"; // to avoid naming conflict
+import { cart, addToCart } from "../data/cart.js"; // to avoid naming conflict
 import { products } from "../data/products.js";
 
 let productsHTML = '';
@@ -66,36 +66,28 @@ document.querySelector('.js-products-grid').
 
 
 
+function updateCartQuantity() {
+  let cartQUantity = 0;
+
+  cart.forEach((cartItem) => {
+    cartQUantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQUantity;
+}
+
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
-      const productId = button.dataset.productId;
+      // const productId = button.dataset.productId;
+      const { productId } = button.dataset; //destructurings
 
-      let matchingItem;
 
-      cart.forEach((item) => {
-        if (productId === item.productId) {
-          matchingItem = item;
-        }
-      })
+      addToCart(productId);
 
-      if (matchingItem) {
-        matchingItem.quantity += 1;
-      } else {
-        cart.push({
-          productId: productId,
-          quantity: 1
-        });
-      }
-
-      let cartQUantity = 0;
-
-      cart.forEach((item) => {
-        cartQUantity += item.quantity;
-      });
-
-      document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQUantity;
+      updateCartQuantity();
 
     });
   });
