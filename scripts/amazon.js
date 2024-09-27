@@ -1,5 +1,6 @@
 //const cart = [];  as we have already used cart[] in the cart.js file
 import { cart } from "../data/cart.js"; // to avoid naming conflict
+import { products } from "../data/products.js";
 
 let productsHTML = '';
 
