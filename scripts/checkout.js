@@ -109,4 +109,4 @@ document.querySelectorAll('.js-delete-link')
             );
             container.remove();
         });
-    });
+    }); 
