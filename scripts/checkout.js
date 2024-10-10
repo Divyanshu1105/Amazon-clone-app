@@ -6,19 +6,26 @@ import { loadCart } from '../data/cart.js';
 // import '../data/cart-class.js';
 
 async function loadPage() {
-    await loadProductsFetch();
+    try {
+        // throw 'error1';
 
-    const value = await new Promise((resolve, reject) => {
-        //throw 'error2';
-        loadCart(() => {
-            resolve('value3');
+        await loadProductsFetch();
+
+        const value = await new Promise((resolve, reject) => {
+            // throw 'error2';
+            loadCart(() => {
+                // reject('error3');
+                resolve('value3');
+            });
         });
-    });
+
+    } catch (error) {
+        console.log('Unexpected error. Please try again later.');
+    }
 
     renderOrderSummary();
     renderPaymentSummary();
 }
-
 loadPage();
 
 /*
