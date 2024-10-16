@@ -14,7 +14,7 @@ async function loadPage() {
         const value = await new Promise((resolve, reject) => {
             // throw 'error2';
             loadCart(() => {
-                // reject('error3');
+                // reject('error3'); Used reject because cart load and if there is error which will shows in future and that's why using reject here instead of 'throw' which doesn't works in future
                 resolve('value3');
             });
         });
@@ -30,7 +30,7 @@ loadPage();
 
 /*
 Promise.all([
-    loadProductsFetch(),
+    loadProductsFetch(), // because it returns a promise
     new Promise((resolve) => {
         loadCart(() => {
             resolve();

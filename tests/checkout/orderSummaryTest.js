@@ -8,7 +8,7 @@ describe('test suite: renderOrderSummary', () => {
 
     beforeAll((done) => {
         loadProductsFetch().then(() => {
-            done();
+            done(); // this function helps loadproducts first and then continue rest code.
         });
     });
 
