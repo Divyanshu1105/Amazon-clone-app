@@ -139,7 +139,7 @@ export function loadProducts(fun) {
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
-} 9
+}
 
 //Below is full product list
 // export const products = [
